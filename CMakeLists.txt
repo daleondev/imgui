@@ -13,11 +13,15 @@ endif()
 # sources and headers
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
+set(SOURCES_BACKENDS ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.cpp)
+set(HEADERS_BACKENDS ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.h ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.h)
 
 # static library
 add_library(imgui STATIC 
     ${SOURCES} 
-    ${HEADERS})
+    ${HEADERS}
+    ${SOURCES_BACKENDS}
+    ${HEADERS_BACKENDS})
 
 # include directories
 target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})    
