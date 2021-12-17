@@ -18,3 +18,8 @@ file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 add_library(imgui SHARED 
     ${SOURCES} 
     ${HEADERS})
+    
+# runtime library
+if(MSVC)
+	set_property(TARGET glew PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
