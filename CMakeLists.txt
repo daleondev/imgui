@@ -24,7 +24,7 @@ add_library(imgui STATIC
     ${HEADERS_BACKENDS})
 
 # include directories
-target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../freeglut/freeglut/freeglut/include)    
+target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})    
 
 # runtime library
 if(MSVC)
