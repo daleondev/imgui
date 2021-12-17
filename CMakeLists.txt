@@ -14,8 +14,8 @@ endif()
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 
-# shared library
-add_library(imgui SHARED 
+# static library
+add_library(imgui STATIC 
     ${SOURCES} 
     ${HEADERS})
 
