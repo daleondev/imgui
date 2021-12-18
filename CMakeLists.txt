@@ -1,20 +1,30 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(imgui VERSION 0.1.0)
+project(imgui 
+    VERSION 0.1.0
+    DESCRIPTION "Dear ImGui"
+    LANGUAGES CXX)
+
+# ----------------------------------
+# preparations
+# ----------------------------------
 
 # set cpp standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# pic
-if(UNIX)
-	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-endif()
-
 # sources and headers
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
-set(SOURCES_BACKENDS ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.cpp)
-set(HEADERS_BACKENDS ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.h ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.h)
+set(SOURCES_BACKENDS 
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp 
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.cpp)
+set(HEADERS_BACKENDS 
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.h 
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.h)
+
+# ----------------------------------
+# configure library
+# ----------------------------------
 
 # static library
 add_library(imgui STATIC 
