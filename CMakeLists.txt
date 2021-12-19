@@ -17,10 +17,15 @@ file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 set(SOURCES_BACKENDS 
     ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp 
-    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_sdl.cpp)
 set(HEADERS_BACKENDS 
     ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.h 
-    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.h)
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_sdl.h)
+
+# linked libraries
+set(LIBS SDL2)
 
 # ----------------------------------
 # configure library
@@ -35,6 +40,8 @@ add_library(imgui STATIC
 
 # include directories
 target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})    
+
+target_link_libraries(imgui PRIVATE ${LIBS})
 
 # runtime library
 if(MSVC)
