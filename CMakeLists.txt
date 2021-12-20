@@ -25,7 +25,7 @@ set(HEADERS_BACKENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_sdl.h)
 
 # linked libraries
-set(LIBS SDL2)
+set(LIBS SDL2-static)
 
 # ----------------------------------
 # configure library
