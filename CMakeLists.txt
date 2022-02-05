@@ -16,13 +16,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 set(SOURCES_BACKENDS 
-    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp 
-    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_sdl.cpp)
 set(HEADERS_BACKENDS 
-    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.h 
-    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_glut.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_opengl3.h
     ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_sdl.h)
+if(MSVC)
+    set(SOURCES_BACKENDS ${SOURCES_BACKENDS} ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_win32.cpp)
+    set(HEADERS_BACKENDS ${HEADERS_BACKENDS} ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_win32.h)
+endif()
 
 # linked libraries
 set(LIBS SDL2-static)
